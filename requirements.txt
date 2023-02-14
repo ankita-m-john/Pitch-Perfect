@@ -6,3 +6,7 @@ aubio
 crepe
 demucs
 soundfile
+demucs
+keyboard
+wave
+torchaudio

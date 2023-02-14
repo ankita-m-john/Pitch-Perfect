@@ -1,7 +1,0 @@
-demucs
-numpy
-pyaudio
-soundfile
-keyboard
-wave
-torchaudio
