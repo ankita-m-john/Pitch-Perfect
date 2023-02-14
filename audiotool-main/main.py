@@ -22,7 +22,7 @@ class RecordingThread(QThread):
         
         # 16 bits per sample
         sample_format = pyaudio.paInt16 
-        chanels = 2
+        chanels = 1
         
         # Record at 44400 samples per second
         smpl_rt = 44400 
@@ -35,16 +35,15 @@ class RecordingThread(QThread):
 
         print("Setting index for audio mixer")
 
-        for i in range(pa.get_device_count()):
-            dev = pa.get_device_info_by_index(i)
-            if (dev['name'] == 'Stereo Mix (Realtek HD Audio Stereo input)' and dev['hostApi'] == 0):
-                dev_index = dev['index']
-                print('dev_index', dev_index)
+        dev = pa.get_default_host_api_info()
+    #if (dev['name'] == 'Stereo Mix (Realtek HD Audio Stereo input)' and dev['hostApi'] == 0):
+     #   dev_index = dev['index']
+      #  print('dev_index', dev_index)
 
         stream = pa.open(format=sample_format, channels=chanels,
-                        rate=smpl_rt, input=True,
-                        input_device_index = dev_index,
-                        frames_per_buffer=chunk)
+                 rate=smpl_rt, input=True,
+                 input_device_index = dev["defaultInputDevice"],
+                 frames_per_buffer=chunk)
         
         print('Recording...')
         
@@ -84,7 +83,7 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(300, 250)
-        self.setWindowTitle("AudioTool by apoxnen")
+        self.setWindowTitle("Audio Hear me now!!")
 
         # Create recording thread and attach slots to its signals
         self.recording_thread = RecordingThread(target_file='test_recording.wav')
