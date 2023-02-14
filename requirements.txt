@@ -1,0 +1,8 @@
+numpy
+pyaudio
+pygame
+music21
+aubio
+crepe
+demucs
+soundfile
