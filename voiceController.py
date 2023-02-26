@@ -60,7 +60,7 @@ def get_current_note(volume_thresh=0.01, printOut=False):
         # current frame.
         volume = np.sum(samples**2)/len(samples) * 100
 
-        if pitch and volume > volume_thresh:  # adjust with your mic!
+        if pitch and volume > volume_thresh:  # adjust with your mic
             current_pitch.frequency = pitch
         else:
             continue

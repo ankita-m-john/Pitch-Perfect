@@ -1,4 +1,6 @@
 numpy
+tensorflow
+ffmpeg
 pyaudio
 pygame
 music21
@@ -10,3 +12,4 @@ demucs
 keyboard
 wave
 torchaudio
+pandas

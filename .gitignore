@@ -1,2 +1,13 @@
 env1/
 env/
+desktop.ini
+inst.py
+requirements2.txt
+test.exe
+separated/
+*.csv
+*.mp3
+*.wav
+*.zip
+audio/
+*.png
