@@ -11,3 +11,4 @@ separated/
 *.zip
 audio/
 *.png
+__pycache__/
