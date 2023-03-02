@@ -11,8 +11,4 @@ separated/
 *.zip
 audio/
 *.png
-<<<<<<< HEAD
 __pycache__/
-=======
-__pycache__
->>>>>>> 6233304b925215fd41e98bfe6582685a8270d6f1
