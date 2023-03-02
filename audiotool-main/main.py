@@ -105,11 +105,11 @@ class Window(QWidget):
         self.label.adjustSize()
         layout.addWidget(self.label)
  
-        self.record_button = QPushButton('▶ Record')
+        self.record_button = QPushButton(' Record')
         self.record_button.clicked.connect(self.recording_thread.start)
         layout.addWidget(self.record_button)
  
-        self.stop_button = QPushButton("▪Stop")
+        self.stop_button = QPushButton("Stop")
         self.stop_button.setEnabled(False)
         self.stop_button.clicked.connect(self.recording_thread.stop)
         layout.addWidget(self.stop_button)
@@ -119,7 +119,7 @@ class Window(QWidget):
     @pyqtSlot()
     def recording_started(self):
         """This slot is called when recording starts"""
-        self.label.setText('◉ Recording...')
+        self.label.setText('Recording...')
         self.stop_button.setDisabled(False)
         self.record_button.setDisabled(True)
 
@@ -132,14 +132,14 @@ class Window(QWidget):
     
     @pyqtSlot()
     def demucs_started(self):
-        """This slot is called when demucs starts"""
+     
         self.label.setText('Running demucs...')
         self.stop_button.setDisabled(True)
         self.record_button.setDisabled(True)
 
     @pyqtSlot()
     def demucs_stopped(self):
-        """This slot is called when demucs is cancelled"""
+      
         self.label.setText('Canceled!')
         self.record_button.setDisabled(False)
         self.stop_button.setDisabled(True)

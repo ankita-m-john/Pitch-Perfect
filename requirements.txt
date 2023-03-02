@@ -13,3 +13,4 @@ keyboard
 wave
 torchaudio
 pandas
+PyQt6
