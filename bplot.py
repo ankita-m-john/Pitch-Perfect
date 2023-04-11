@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import os
 import csv
 
-path = "D:\\Main Project\\Dataset\\Data\\genres_original\\hiphop\\csv\\"
+path = "D:\\Main Project\\New Dataset\\Killing Me Softly\\KMS\\vocals\\wav\\csv\\"
 
 
 plt.tick_params(axis='both', which='major', labelsize=8)
@@ -16,14 +16,18 @@ for filename in os.listdir(path):
     timeList = []
     f0List = []
     # Load the file
+    # if filename=="plot":
+    #     continue
+    assert os.path.isfile(path+filename)
     with open(path+filename, 'r') as file:
         for row in csv.DictReader(file):
             timeList.append(float(row['time']))
             f0List.append(float(row['frequency']))
         # Add new data to the plots
     plt.plot(timeList, f0List)
-    filename = filename[:-13] + '_' + filename[-12:-7]
-    output_path = path[:-4] + "plot\\" + filename
+    plt.axis('off')
+    filename = filename[:-7]
+    output_path = path[:-4] + "Chandelier\\" + filename
     plt.savefig(output_path)
     print("Saved at "+output_path)
     plt.close()
