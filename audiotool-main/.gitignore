@@ -1,4 +1,4 @@
-*.mp3
+audio/
 *.wav
 separated/
 __pycache__/
