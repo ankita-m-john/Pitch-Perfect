@@ -4,12 +4,13 @@ import os
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
+import sys
 filename = input("Enter file name: ")
 path = "audio\\" + filename
 try:
     sr, audio = wavfile.read(path)
 except ValueError:
-    print("CREPE: Could not read %s" % file, file=sys.stderr)
+    print("CREPE: Could not read %s" % filename, file=sys.stderr)
     raise
 # def output_path(file, suffix, output_dir):
 #     """
