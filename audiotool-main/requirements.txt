@@ -5,3 +5,4 @@ soundfile
 keyboard
 wave
 torchaudio
+pyQt6
