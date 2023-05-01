@@ -9,17 +9,17 @@ import queue
 
 import music21  # yes! new favorite library
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-input", required=False, type=int, help="Audio Input Device")
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("-input", required=False, type=int, help="Audio Input Device")
+# args = parser.parse_args()
 
-if not args.input:
-    print("No input device specified. Printing list of input devices now: ")
-    p = pyaudio.PyAudio()
-    for i in range(p.get_device_count()):
-        print("Device number (%i): %s" % (i, p.get_device_info_by_index(i).get('name')))
-    print("Run this program with -input 1, or the number of the input you'd like to use.")
-    exit()
+# if not args.input:
+#     print("No input device specified. Printing list of input devices now: ")
+#     p = pyaudio.PyAudio()
+#     for i in range(p.get_device_count()):
+#         print("Device number (%i): %s" % (i, p.get_device_info_by_index(i).get('name')))
+#     print("Run this program with -input 1, or the number of the input you'd like to use.")
+#     exit()
 
 # PyAudio object.
 p = pyaudio.PyAudio()
@@ -27,7 +27,7 @@ p = pyaudio.PyAudio()
 # Open stream.
 stream = p.open(format=pyaudio.paFloat32,
                 channels=1, rate=44100, input=True,
-                input_device_index=args.input, frames_per_buffer=4096)
+                input_device_index=1, frames_per_buffer=4096)
 time.sleep(1)
 
 # Aubio's pitch detection.
