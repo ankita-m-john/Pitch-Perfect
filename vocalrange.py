@@ -1,76 +1,56 @@
-import aubio
-import numpy as np
-import pyaudio
+import pandas as pd
+from getpitch import q, get_current_note
+from threading import Thread
+import music21
 
-import time
-import argparse
+print("Sing a Low Note: ")
 
-import queue
+t = Thread(target=get_current_note)
+t.daemon = True
+t.start()
 
-import music21  # yes! new favorite library
+low_note = ""
+high_note = ""
+have_low = False
+have_high = True
+ch = 'y'
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument("-input", required=False, type=int, help="Audio Input Device")
-# args = parser.parse_args()
+noteHoldLength = 20  # how many samples in a row user needs to hold a note
+noteHeldCurrently = 0  # keep track of how long current note is held
+noteHeld = ""  # string of the current note
 
-# if not args.input:
-#     print("No input device specified. Printing list of input devices now: ")
-#     p = pyaudio.PyAudio()
-#     for i in range(p.get_device_count()):
-#         print("Device number (%i): %s" % (i, p.get_device_info_by_index(i).get('name')))
-#     print("Run this program with -input 1, or the number of the input you'd like to use.")
-#     exit()
-
-# PyAudio object.
-p = pyaudio.PyAudio()
-
-# Open stream.
-stream = p.open(format=pyaudio.paFloat32,
-                channels=1, rate=44100, input=True,
-                input_device_index=1, frames_per_buffer=4096)
-time.sleep(1)
-
-# Aubio's pitch detection.
-pDetection = aubio.pitch("default", 2048, 2048//2, 44100)
-# Set unit.
-pDetection.set_unit("Hz")
-pDetection.set_silence(-40)
-
-q = queue.Queue()
-
-
-def get_current_note(volume_thresh=0.01, printOut=False):
-    """Returns the Note Currently Played on the q object when audio is present
-    
-    Keyword arguments:
-
-    volume_thresh -- the volume threshold for input. defaults to 0.01
-    printOut -- whether or not to print to the terminal. defaults to False
-    """
-    current_pitch = music21.pitch.Pitch()
-
+centTolerance = 30  # how much deviance from proper note to tolerate
+   
+try:
     while True:
+        if not q.empty():
+            b = q.get()
+            print("{} held for: {} and note CURRENTLY: {}".format(b['Note'], noteHeld,noteHeldCurrently),'\r', end='')           
+            if b['Note'] == noteHeldCurrently:
+                noteHeld += 1
+                if noteHeld == noteHoldLength:
+                    if not have_low:
+                        low_note = noteHeldCurrently
+                        low_note_f = b['Frequency']
+                        have_low = True
+                        # high = b['Note']
+                        print("\nSing a High Note:\n")
+                    else:
+                        print("{} held for: {} and note CURRENTLY: {}".format(b['Note'], noteHeld,noteHeldCurrently),'\r', end='')
+                        if int(noteHeldCurrently[-1]) <= int(low_note[-1]):
+                            noteHeld = 0  # we're holding a lower octave note
+                        elif int(noteHeldCurrently[-1]) and not high_note:
+                            high_note = noteHeldCurrently
+                            high_note_f = b['Frequency']
+                            have_high = True
+                            print("Vocal range: {} to {} i.e {} to {}".format(low_note,high_note,low_note_f,high_note_f))
+            else:
+                noteHeldCurrently = b['Note']
+                noteHeld = 1
+except KeyboardInterrupt:
+    print("Keyboard interrupt received. Exiting...")
 
-        data = stream.read(1024, exception_on_overflow=False)
-        samples = np.fromstring(data,
-                                dtype=aubio.float_type)
-        pitch = pDetection(samples)[0]
-
-        # Compute the energy (volume) of the
-        # current frame.
-        volume = np.sum(samples**2)/len(samples) * 100
-
-        if pitch and volume > volume_thresh:  # adjust with your mic
-            current_pitch.frequency = pitch
-        else:
-            continue
-
-        if printOut:
-            print(current_pitch)
-        
-        else:
-            current = current_pitch.nameWithOctave
-            q.put({'Note': current, 'Cents': current_pitch.microtone.cents})
-
-if __name__ == '__main__':
-    get_current_note(volume_thresh=0.001, printOut=True)
+fp = open("temp_vr.txt",'w')
+L = [str(low_note_f), str(high_note_f)] 
+fp.writelines(L) 
+fp.close()
