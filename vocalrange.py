@@ -34,7 +34,7 @@ try:
                         low_note_f = b['Frequency']
                         have_low = True
                         # high = b['Note']
-                        print("\nSing a High Note:\n")
+                        print("\nSing a High Note:")
                     else:
                         print("{} held for: {} and note CURRENTLY: {}".format(b['Note'], noteHeld,noteHeldCurrently),'\r', end='')
                         if int(noteHeldCurrently[-1]) <= int(low_note[-1]):
@@ -43,7 +43,7 @@ try:
                             high_note = noteHeldCurrently
                             high_note_f = b['Frequency']
                             have_high = True
-                            print("Vocal range: {} to {} i.e {} to {}".format(low_note,high_note,low_note_f,high_note_f))
+                            print("\nVocal range: {} to {} i.e {:.2f} to {:.2f}".format(low_note,high_note,low_note_f,high_note_f))
             else:
                 noteHeldCurrently = b['Note']
                 noteHeld = 1
