@@ -1,8 +1,6 @@
 .DS_Store
-env1/
 tmp_*/
 
-*.txt
 !requirements.txt
 !example_data/*.txt
 
