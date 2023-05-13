@@ -5,7 +5,7 @@ file1_lines = file1.readlines()
 file2_lines = file2.readlines()
 count = 0
 
-for i in range(len(file1_lines)):
+for i in range(len(file2_lines)):
     L1 = file1_lines[i].split('\t')
     L2 = file2_lines[i].split('\t')
     if(L1[0] == L2[0]):

@@ -51,6 +51,6 @@ except KeyboardInterrupt:
     print("Keyboard interrupt received. Exiting...")
 
 fp = open("temp_vr.txt",'w')
-L = [str(low_note_f), str(high_note_f)] 
+L = [str(low_note_f),'\n', str(high_note_f)] 
 fp.writelines(L) 
 fp.close()

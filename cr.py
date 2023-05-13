@@ -33,6 +33,7 @@ columns = ["time", "frequency"]
 df = pd.read_csv(path, usecols=columns)
 # print("Contents in csv file:", df)
 plt.plot(df.time, df.frequency)
+plt.axis('off')
 # plt.show()
 path = "plots\\" + filename[:-4] + ".png"
 plt.savefig(path)
