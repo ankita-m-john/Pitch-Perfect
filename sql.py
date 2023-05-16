@@ -23,3 +23,6 @@ except:
 for x in cur:  
      print(x)  
 myconn.close()  
+
+
+# INSERT INTO Song VALUES(1,"Deep Calls To Deep","Mary Kathryn","New Age", "D:\\Main Project\\Pitch-Perfect\\audio\\Deepc.mp3","D:\\Main Project\Pitch-Perfect\\csv\\Deep Calls To Deep.csv", "D:\\Main Project\\Pitch-Perfect\\audio\\lyrics\\Deep Calls To Deep.txt", "D:\\Main Project\\Pitch-Perfect\\lrc\\Deep Calls To Deep.txt")

@@ -27,13 +27,13 @@ f0_data = np.vstack([time, frequency]).transpose()
 np.savetxt(path, f0_data, fmt=['%.3f', '%.3f'], delimiter=',',
 header='time,frequency', comments='')
 
-plt.rcParams["figure.figsize"] = [7.00, 3.50]
-plt.rcParams["figure.autolayout"] = True
-columns = ["time", "frequency"]
-df = pd.read_csv(path, usecols=columns)
-# print("Contents in csv file:", df)
-plt.plot(df.time, df.frequency)
-plt.axis('off')
-# plt.show()
-path = "plots\\" + filename[:-4] + ".png"
-plt.savefig(path)
+# plt.rcParams["figure.figsize"] = [7.00, 3.50]
+# plt.rcParams["figure.autolayout"] = True
+# columns = ["time", "frequency"]
+# df = pd.read_csv(path, usecols=columns)
+# # print("Contents in csv file:", df)
+# plt.plot(df.time, df.frequency)
+# plt.axis('off')
+# # plt.show()
+# path = "plots\\" + filename[:-4] + ".png"
+# plt.savefig(path)

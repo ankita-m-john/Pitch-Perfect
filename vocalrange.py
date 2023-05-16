@@ -1,7 +1,9 @@
-import pandas as pd
+# import pandas as pd
 from getpitch import q, get_current_note
 from threading import Thread
-import music21
+# import music21
+import mysql.connector
+
 
 print("Sing a Low Note: ")
 
@@ -49,8 +51,15 @@ try:
                 noteHeld = 1
 except KeyboardInterrupt:
     print("Keyboard interrupt received. Exiting...")
-
-fp = open("temp_vr.txt",'w')
-L = [str(low_note_f),'\n', str(high_note_f)] 
-fp.writelines(L) 
-fp.close()
+# low_note_f = 100.0
+# high_note_f = 200.0
+mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
+cur = mydb.cursor()
+sql = "UPDATE User SET low_note = %s, high_note = %s WHERE user_id=1" #User id must be matched with UI
+# fp = open("temp_vr.txt",'w')
+L = (low_note_f,high_note_f)
+cur.execute(sql,L)
+mydb.commit()
+print(cur.rowcount,"Record updated.") 
+# fp.writelines(L) 
+# fp.close()

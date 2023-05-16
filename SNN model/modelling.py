@@ -13,6 +13,7 @@ import PIL.ImageOps
 import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
+from songrec import SiameseNetwork
 
 train_dir ='D:/Main Project/Pitch-Perfect/SNN model/NewData/billy/vocals.png'
 test_dir = 'D:/Main Project/Pitch-Perfect/SNN model/NewData/Cannibal/vocals.png'   
@@ -111,4 +112,6 @@ output1, output2 = model(Variable(a), Variable(b))
 distance = F.pairwise_distance(output1, output2)
 #imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(distance.item()))
 imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(100-(100*(distance.item()))))
+Score = (100-(100*(distance.item())))
+print(Score)
 #imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(100-(100*(distance.item()/0.5))))
