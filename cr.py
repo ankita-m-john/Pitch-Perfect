@@ -2,8 +2,8 @@ import crepe
 from scipy.io import wavfile
 import os
 import numpy as np
-import pandas as pd
-from matplotlib import pyplot as plt
+# import pandas as pd
+# from matplotlib import pyplot as plt
 import sys
 filename = input("Enter file name: ")
 path = "audio\\" + filename
