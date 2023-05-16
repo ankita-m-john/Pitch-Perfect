@@ -73,8 +73,7 @@ def findKClosestElements(nums, target, k):
     # return `k` closest elements
     return nums[left+1: right]
  
- 
-if __name__ == '__main__':
+def songrec():
     import mysql.connector
     import sys
     import torch.nn as nn
@@ -92,7 +91,7 @@ if __name__ == '__main__':
     result = cur.fetchall()
     # nums = [10, 12, 15, 17, 18, 20, 25]
     k = 1 #Change after completing db
-    target = Score * result[0][0] / 100
+    target = round(Score * result[0][0] / 100)
     print(target)
     L = findKClosestElements(nums, target, k)
     print(L)
@@ -100,3 +99,5 @@ if __name__ == '__main__':
     out = cur.fetchall()
     for x in out:
         print(x[0])
+if __name__ == '__main__':
+    songrec()
