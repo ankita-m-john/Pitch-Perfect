@@ -21,3 +21,6 @@ def alignmentscore():
 
     file1.close()
     file2.close()
+
+if __name__ == '__main__':
+    alignmentscore()

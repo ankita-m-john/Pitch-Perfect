@@ -16,7 +16,7 @@ import torch.nn.functional as F
 from songrec import SiameseNetwork
 
 train_dir ='D:/Main Project/Pitch-Perfect/plots/song.png'
-test_dir = 'D:/Main Project/Pitch-Perfect/plots/song1.png'   
+test_dir = 'D:/Main Project/Pitch-Perfect/plots/song.png'   
 
 print("Alia1")
 

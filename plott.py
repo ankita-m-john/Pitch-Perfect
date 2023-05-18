@@ -1,7 +1,6 @@
 from matplotlib import pyplot as plt
 import pandas as pd
-import mysql.connector
-import csv
+
 
 def plot():
 
@@ -18,25 +17,8 @@ def plot():
     # plt.show()
     path = "plots\\song.png"
     plt.savefig(path)   
-
-    mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
-    cur = mydb.cursor()
-    cur.execute("SELECT name,csv FROM Song WHERE song_id=1")
-    result = cur.fetchall() 
+    plt.close()
+    return(index)
     
-    index = 20000
-    with open(result[0][1]) as fd:
-        reader=csv.reader(fd)
-        rows = list(reader)
-        rows2= rows[:index+1]
-    df = pd.DataFrame(rows2, columns = ['Time', 'Frequency'])
-    # time = [x for x, y in rows2]
-    # frequency = [y for x, y in rows2]
-    #print(time)
-    # print(frequency)
-    # print(df[0])
-    plt.plot(df.Time,df.Frequency)
-    # plt.axis('off')
-    plt.show()
-    path = "plots\\song1.png"
-    plt.savefig(path)
+if __name__ == '__main__':
+    i = plot()
