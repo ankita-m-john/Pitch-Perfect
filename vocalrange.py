@@ -51,8 +51,8 @@ def vocalrange():
                     noteHeld = 1
     except KeyboardInterrupt:
         print("Keyboard interrupt received. Exiting...")
-    # low_note_f = 100.0
-    # high_note_f = 200.0
+    low_note_f = 100.0
+    high_note_f = 200.0
     mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
     cur = mydb.cursor()
     sql = "UPDATE User SET low_note = %s, high_note = %s WHERE user_id=1" #User id must be matched with UI
@@ -63,3 +63,6 @@ def vocalrange():
     print(cur.rowcount,"Record updated.") 
 # fp.writelines(L) 
 # fp.close()
+
+if __name__=="__main__":
+    vocalrange()
