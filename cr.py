@@ -1,13 +1,13 @@
 import crepe
 from scipy.io import wavfile
-import os
+# import os
 import numpy as np
 # import pandas as pd
 # from matplotlib import pyplot as plt
 import sys
 def pitch_detect():
     filename = "vocals.wav"
-    path = "D:\\Main Project\\Pitch-Perfect\\separated\\htdemucs\\song\\" + filename
+    path = "D:\\Main Project\\Pitch-Perfect\\separated\\htdemucs\\Shape Of You\\" + filename
     try:
         sr, audio = wavfile.read(path)
     except ValueError:

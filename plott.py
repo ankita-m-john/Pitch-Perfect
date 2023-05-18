@@ -4,7 +4,7 @@ import pandas as pd
 
 def plot():
 
-    path = "D:\\Main Project\\Pitch-Perfect\\csv\\Shape Of You.csv"
+    path = "D:\\Main Project\\Pitch-Perfect\\csv\\song.csv"
     plt.rcParams["figure.figsize"] = [7.00, 3.50]
     plt.rcParams["figure.autolayout"] = True
     columns = ["time", "frequency"]

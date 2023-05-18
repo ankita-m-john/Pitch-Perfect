@@ -4,7 +4,7 @@ from threading import Thread
 # import music21
 import mysql.connector
 
-def vocalrange():
+def vocalRange():
     print("Sing a Low Note: ")  
 
     t = Thread(target=get_current_note)

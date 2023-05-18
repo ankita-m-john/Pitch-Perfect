@@ -11,7 +11,7 @@ def plot_original():
     result = cur.fetchall() 
     
     index = plot()
-    path = result[0][1]
+    path = "D:\\Main Project\\Pitch-Perfect\\csv\\Shape Of You.csv" #result[0][1]
     plt.rcParams["figure.figsize"] = [7.00, 3.50]
     plt.rcParams["figure.autolayout"] = True
     columns = ["time", "frequency"]
