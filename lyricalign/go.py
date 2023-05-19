@@ -30,10 +30,11 @@ vnv_model = 'D:\\Main Project\\Pitch-Perfect\\lyricalign\\vnv_model'
 do_vnv = True
 vnv_hop = 160
 
-song_name = args.input_audio.split('/')[-1].split('.')[0]
+song_name = args.input_audio.split('\\')[-1].split('.')[0]
 tmp_dir = 'D:\\Main Project\\Pitch-Perfect\\lyricalign\\'+'tmp_{}_{}'.format(song_name, ''.join(random.choice(
     string.ascii_uppercase + string.digits) for _ in range(5))
 )
+
 if os.path.isdir(tmp_dir):
     raise Exception('Tmp directory already exist!')
 else:
