@@ -78,7 +78,7 @@ def songrec():
     import sys
     import torch.nn as nn
     sys.path.insert(0,'D:\\Main Project\\Pitch-Perfect\\SNN model')
-    from modelling import Score 
+    from modelling import Score
     song_id = 3 #Must get from UI
     mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
     cur = mydb.cursor()
