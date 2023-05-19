@@ -2,13 +2,11 @@ env/
 desktop.ini
 inst.py
 test.exe
-separated/
-*.csv
 *.wav
 *.zip
 *.png
 !song.csv
 !song.png
 !song1.png
-!separated/htdemucs/song/
+!separated/htdemucs/song/vocals.wav
 __pycache__/
