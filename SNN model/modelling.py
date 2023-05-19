@@ -111,7 +111,7 @@ merged = torch.cat((a,b), 0)
 output1, output2 = model(Variable(a), Variable(b))
 distance = F.pairwise_distance(output1, output2)
 #imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(distance.item()))
-imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(100-(100*(distance.item()))))
+# imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(100-(100*(distance.item())))) Undo this to see
 Score = (100-(100*(distance.item())))
 print(Score)
 #imshow(torchvision.utils.make_grid(merged), 'Similarity: {:.2f}'.format(100-(100*(distance.item()/0.5))))
