@@ -15,7 +15,9 @@ def alignmentscore():
     for i in range(len(file2_lines)):
         L1 = file1_lines[i].split('\t')
         L2 = file2_lines[i].split('\t')
-        if(L1[0] == L2[0]):
+        t1 = float(L1[0])
+        t2 = float(L2[0])
+        if ((t1-1) <= t2) and (t2<=(t1+1)):
             count = count + 1
     print("Match percentage: {:.2f}".format((count/(i+1))*100)) 
 

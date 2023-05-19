@@ -64,7 +64,7 @@ else:
 
     cur.execute("SELECT song_id,mp3,lyrics FROM Song WHERE song_id = 1")
     result = cur.fetchall()
-    r = subprocess.run(["py","lyricalign/go.py",result[0][1],result[0][2],"lyricalign/output.txt"]) #change lyric alignment input aligns user's song with original lyrics
+    # r = subprocess.run(["py","lyricalign/go.py",result[0][1],result[0][2],"lyricalign/output.txt"]) #change lyric alignment input aligns user's song with original lyrics
     
     alignmentscore() #matches user song's aligned lyrics to the originals song's and generates a percentage match
     print("Alia4")
