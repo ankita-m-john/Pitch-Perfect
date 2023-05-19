@@ -27,17 +27,18 @@ else:
     # print("Alia2")
     
     pitch_detect() #detects pitch and stores csv files as song.csv  
-    print("Alia3")
+    print("Alia2")
 
     plot_original()  #needs fixing and change paths later gives plots of original (song.png) and user songs (song1.png)  
-    print("Alia4")
+    print("Alia3")
 
     cur.execute("SELECT song_id,mp3,lyrics FROM Song WHERE song_id = 1")
     result = cur.fetchall()
     r = subprocess.run(["py","lyricalign/go.py",result[0][1],result[0][2],"lyricalign/output.txt"]) #change lyric alignment input aligns user's song with original lyrics
+    
     alignmentscore() #matches user song's aligned lyrics to the originals song's and generates a percentage match
-    print("Alia5")
+    print("Alia4")
 
     songrec() # runs snn code to get percentage of match between song.png and song1.png
               # Generates user score and recommends songs based on total scores 
-    print("Alia6")
+    print("Alia5")
