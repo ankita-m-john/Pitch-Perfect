@@ -2,7 +2,7 @@
 \connect root:ankita@127.0.0.1:3306
 \use Pitch_Perfect
 create table Song(song_id int auto_increment primary key, name varchar(50) not null, artist varchar(50) not null, genre varchar(50), mp3 varchar(100) not null, csv varchar(100) not null, lyrics varchar(100) not null, lrc varchar(100) not null, background varchar(100) not null);
-create table User(user_id int not null primary key, name varchar(50) not null, low_note float, high_note float);
+create table User(user_id int not null primary key, user_name varchar(50) not null,password varchar(50) not null, low_note float, high_note float);
 create table Scoring(user_id int not null, song_id int not null, Total_Score int, primary key(user_id,song_id));
 INSERT INTO Song VALUES(1,"Deep Calls To Deep","Mary Kathryn","New Age", "D:\\Main Project\\Pitch-Perfect\\audio\\Deep Calls To Deep.mp3","D:\\Main Project\\Pitch-Perfect\\csv\\Deep Calls To Deep.csv", "D:\\Main Project\\Pitch-Perfect\\audio\\lyrics\\Deep Calls To Deep.txt", "D:\\Main Project\\Pitch-Perfect\\lrc\\Deep Calls To Deep.txt", "D:\\Main Project\\Pitch-Perfect\\audio\\background\\Deep Calls To Deep.mp3");
 INSERT INTO Song VALUES(2,"New Divide","Linkin Park","Rock", "D:\\Main Project\\Pitch-Perfect\\audio\\New Divide.mp3","D:\\Main Project\\Pitch-Perfect\\csv\\New Divide.csv", "D:\\Main Project\\Pitch-Perfect\\audio\\lyrics\\New Divide.txt", "D:\\Main Project\\Pitch-Perfect\\lrc\\New Divide.txt","D:\\Main Project\\Pitch-Perfect\\audio\\background\\New Divide.mp3");
