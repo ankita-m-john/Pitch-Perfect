@@ -16,9 +16,6 @@ def plot_original():
     plt.rcParams["figure.autolayout"] = True
     columns = ["time", "frequency"]
     df = pd.read_csv(path, usecols=columns)
-    #print(time)
-    # print(frequency)
-    # print(df[0])
     plt.plot(df.time[:index+1],df.frequency[:index+1])
     plt.axis('off')
     # plt.show()
