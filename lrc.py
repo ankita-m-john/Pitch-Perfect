@@ -4,22 +4,27 @@ import time
 import vlc
 import pathlib
 import signal
+import argparse
 
 # Check that the user has specified the .lrc file
 if (len(sys.argv) != 2):
   exit(0)
 
+parser = argparse.ArgumentParser()
+parser.add_argument('input_lrc', help='')
+args = parser.parse_args()
 # Parse the .lrc file using pylrc
-lrc_file = open(sys.argv[1])
-lrc_string = ''.join(lrc_file.readlines())
-lrc_file.close()
+fp = open(args.input_lrc,'r') 
+lrc_string = ''.join(fp.readlines())
+fp.close()
 
 subs = pylrc.parse(lrc_string)
 
 # Generate the .mp3 filename
 # an alternative is https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python
-filename = pathlib.PurePosixPath(sys.argv[1]).stem
-mp3_file = filename + '.mp3'
+# filename = pathlib.PurePosixPath(sys.argv[1]).stem
+filename = args.input_lrc.split('\\')[-1].split('.')[0]
+mp3_file = "audio/"+filename + '.mp3'
 
 def SongFinished(event):
     global song_has_finished
