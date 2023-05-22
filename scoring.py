@@ -9,30 +9,32 @@ def Total_Score():
     result = cur.fetchall()
     low_limit = result[0][0]
     high_limit = result[0][1]
+    cur.execute("SELECT song_id,name,csv FROM Song") #userid match
+    result = cur.fetchall()
     #print(low_note_f,high_note_f)
     # with open("temp_vr.txt", "r+") as file1:
     #     # Reading from a file
     #     low_limit = float(file1.readline())
     #     high_limit = float(file1.readline())  
+    for i in range(8):
+        df = pd.read_csv("D:\\Main Project\\Pitch-Perfect\\csv\\"+result[i][1]+".csv")
+        print(max(df.frequency),min(df.frequency), high_limit, low_limit)   
 
-    df = pd.read_csv("D:\\Main Project\\Pitch-Perfect\\csv\\Shape Of You.csv")
-    print(max(df.frequency),min(df.frequency), high_limit, low_limit)   
-
-    D = {i:1000 + 100*i for i in range(101)}
-    x = ((abs(high_limit-max(df.frequency))/max(df.frequency))*100)
-    # if x in D:
-    #     print(x,D[x])
-    y = ((abs(low_limit-min(df.frequency))/min(df.frequency))*100)
-    # print(x,1000+100*x)
-    # print(y,1000+100*y)
-    Total_score = 1000+100*x+100*y
-    print(round(Total_score))
-    song_id = 1 #match song id
-    sql = "INSERT INTO Scoring VALUES(1,%s,%s)"
-    # fp = open("temp_vr.txt",'w')
-    L = (song_id, Total_score)
-    cur.execute(sql,L)
-    mydb.commit()
-    print(cur.rowcount,"Record inserted.") 
+        D = {i:1000 + 100*i for i in range(101)}
+        x = ((abs(high_limit-max(df.frequency))/max(df.frequency))*100)
+        # if x in D:
+        #     print(x,D[x])
+        y = ((abs(low_limit-min(df.frequency))/min(df.frequency))*100)
+        # print(x,1000+100*x)
+        # print(y,1000+100*y)
+        Total_score = 1000+100*x+100*y
+        print(round(Total_score))
+        song_id = 8 #match song id
+        sql = "UPDATE Scoring SET Total_Score = %s WHERE user_id = 1 and song_id = %s"
+        # fp = open("temp_vr.txt",'w')
+        L = (Total_score,result[i][0])
+        cur.execute(sql,L)
+        mydb.commit()
+        # print(cur.rowcount,"Record inserted.") 
 if __name__ == "__main__":
     Total_Score()

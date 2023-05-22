@@ -3,7 +3,7 @@ from getpitch import q, get_current_note
 from threading import Thread
 # import music21
 import mysql.connector
-
+from scoring import Total_Score
 def vocalRange():
     print("Sing a Low Note: ")  
 
@@ -61,6 +61,7 @@ def vocalRange():
     cur.execute(sql,L)
     mydb.commit()
     print(cur.rowcount,"Record updated.") 
+    Total_Score()
 # fp.writelines(L) 
 # fp.close()
 
