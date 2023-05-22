@@ -75,7 +75,7 @@ pa.terminate()
 print('Done recording!')
  
 # Save the recorded data in a .wav format
-filename = "recording.wav"
+filename = "D:\\Main Project\\Pitch-Perfect\\audio\\song.wav"
 sf = wave.open(filename, 'wb')
 sf.setnchannels(chanels)
 sf.setsampwidth(pa.get_sample_size(sample_format))

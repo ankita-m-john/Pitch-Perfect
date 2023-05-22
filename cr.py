@@ -14,7 +14,7 @@ def pitch_detect():
         raise
     time, frequency, confidence, activation = crepe.predict(audio, sr, viterbi=True)
     #f0_file = output_path("adio", ".f0.csv","csv\/")
-    path= "csv\\song.csv"
+    path= "D:\\Main Project\\Pitch-Perfect\\csv\\song.csv"
     f0_data = np.vstack([time, frequency]).transpose()
     np.savetxt(path, f0_data, fmt=['%.3f', '%.3f'], delimiter=',',
     header='time,frequency', comments='')

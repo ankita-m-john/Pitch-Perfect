@@ -87,7 +87,7 @@ def songrec():
     nums = []
     for x in result:
         nums.append(x[1])
-    cur.execute("SELECT Total_Score FROM Scoring WHERE song_id = 1")
+    cur.execute("SELECT Total_Score FROM Scoring WHERE song_id = %s",(song_id,))
     result = cur.fetchall()
     # nums = [10, 12, 15, 17, 18, 20, 25]
     k = 1 #Change after completing db

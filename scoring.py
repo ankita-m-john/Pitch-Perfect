@@ -15,7 +15,7 @@ def Total_Score():
     #     low_limit = float(file1.readline())
     #     high_limit = float(file1.readline())  
 
-    df = pd.read_csv("csv\\Shape Of You.csv")
+    df = pd.read_csv("D:\\Main Project\\Pitch-Perfect\\csv\\Shape Of You.csv")
     print(max(df.frequency),min(df.frequency), high_limit, low_limit)   
 
     D = {i:1000 + 100*i for i in range(101)}

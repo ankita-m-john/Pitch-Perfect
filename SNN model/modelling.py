@@ -16,7 +16,7 @@ import torch.nn.functional as F
 from songrec import SiameseNetwork
 
 train_dir ='D:/Main Project/Pitch-Perfect/plots/song.png'
-test_dir = 'D:/Main Project/Pitch-Perfect/plots/song.png'   
+test_dir = 'D:/Main Project/Pitch-Perfect/plots/song1.png'   
 
 print("Alia1")
 
@@ -97,7 +97,7 @@ class SiameseNetwork(nn.Module):
         return output1, output2
     
 
-model = torch.load("D:/Main Project/Pitch-Perfect/SNN model/Model2023.pth", map_location=torch.device('cpu'))
+model = torch.load("D:/Main Project/Pitch-Perfect/SNN model/ModelSNN.pth", map_location=torch.device('cpu'))
 
 model = SiameseNetwork()
 

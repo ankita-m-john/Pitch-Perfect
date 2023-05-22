@@ -4,10 +4,10 @@ import matplotlib
 from matplotlib import pyplot as plt
 import pandas as pd
 
-def plot_original():
+def plot_original(song_id):
     mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
     cur = mydb.cursor()
-    cur.execute("SELECT name,csv FROM Song WHERE song_id=1")
+    cur.execute("SELECT name,csv FROM Song WHERE song_id=%s",(song_id,))
     result = cur.fetchall() 
     
     index = plot()
@@ -18,10 +18,10 @@ def plot_original():
     df = pd.read_csv(path, usecols=columns)
     plt.plot(df.time[:index+1],df.frequency[:index+1])
     plt.axis('off')
-    # plt.show()
+    plt.show()
     # plt.clf()
-    path = "plots\\song1.png"
-    plt.savefig(path)
+    path = "D:\\Main Project\\Pitch-Perfect\\plots\\song1.png"
+    plt.savefig(path,transparent=True)
 
 if __name__ == '__main__':
     matplotlib.use('TkAgg')

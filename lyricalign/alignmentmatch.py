@@ -1,9 +1,9 @@
 import mysql.connector
 
-def alignmentscore():
+def alignmentscore(song_id):
     mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
     cur = mydb.cursor()
-    cur.execute("SELECT name,lrc FROM Song WHERE song_id=1")
+    cur.execute("SELECT name,lrc FROM Song WHERE song_id=%s",(song_id,))
     result = cur.fetchall() 
     file1 = open(result[0][1],'r')
     file2 = open("D:\\Main Project\\Pitch-Perfect\\lyricalign\\output.txt",'r') 

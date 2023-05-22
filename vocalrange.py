@@ -65,4 +65,4 @@ def vocalRange():
 # fp.close()
 
 if __name__=="__main__":
-    vocalrange()
+    vocalRange()
