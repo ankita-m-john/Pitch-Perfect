@@ -78,7 +78,7 @@ def songrec():
     import sys
     import torch.nn as nn
     sys.path.insert(0,'D:\\Main Project\\Pitch-Perfect\\SNN model')
-    from modelling import Score
+    from modelling import Score #this runs the SNN code and gets the score
     song_id = 3 #Must get from UI
     mydb = mysql.connector.connect(host = "127.0.0.1", user = "root",password = "ankita", auth_plugin='mysql_native_password', database = "Pitch_Perfect")
     cur = mydb.cursor()
@@ -91,7 +91,7 @@ def songrec():
     result = cur.fetchall()
     # nums = [10, 12, 15, 17, 18, 20, 25]
     k = 1 #Change after completing db
-    target = round(Score * result[0][0] / 100)
+    target = round(Score * result[0][0] / 100) #This multiplies the percentage of match with the Total_Score to get user score You want this right?
     print(target)
     L = findKClosestElements(nums, target, k)
     print(L)
@@ -99,5 +99,7 @@ def songrec():
     out = cur.fetchall()
     for x in out:
         print(x[0])
+    return(Score, target,out[0][0])
+
 if __name__ == '__main__':
-    songrec()
+    Score, target, name = songrec()

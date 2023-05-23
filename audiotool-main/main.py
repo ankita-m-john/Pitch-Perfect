@@ -86,12 +86,12 @@ class Window(QWidget):
         self.setWindowTitle("Audio Hear me now!!")
 
         # Create recording thread and attach slots to its signals
-        self.recording_thread = RecordingThread(target_file='test_recording.wav')
+        self.recording_thread = RecordingThread(target_file='D:\\Main Project\\music-player-with-lyrics-synchronization-musixmatch\\audio\\song.wav')
         self.recording_thread.sig_started.connect(self.recording_started)
         self.recording_thread.sig_stopped.connect(self.recording_stopped)
 
         # Create demucs thread and attach slots to its signals
-        self.demucs_thread = RecordingThread(target_file='test_recording.wav')
+        self.demucs_thread = RecordingThread(target_file='D:\\Main Project\\music-player-with-lyrics-synchronization-musixmatch\\audio\\song.wav')
         self.demucs_thread.sig_started.connect(self.demucs_started)
         self.demucs_thread.sig_stopped.connect(self.demucs_stopped)
         
@@ -144,9 +144,10 @@ class Window(QWidget):
         self.record_button.setDisabled(False)
         self.stop_button.setDisabled(True)
 
-
-if __name__ == "__main__":
+def record():
     app = QApplication(sys.argv)
     win = Window()
     win.show()
     app.exec()
+if __name__ == "__main__":
+    record()

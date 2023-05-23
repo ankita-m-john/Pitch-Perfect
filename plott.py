@@ -14,7 +14,7 @@ def plot():
     # print("Contents in csv file:", df)
     plt.plot(df.time, df.frequency)
     plt.axis('off')
-    plt.show()
+    # plt.show()
     path = "D:\\Main Project\\Pitch-Perfect\\plots\\song.png"
     plt.savefig(path,transparent=True)   
     plt.close()

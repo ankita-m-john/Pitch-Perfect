@@ -23,6 +23,7 @@ def alignmentscore(song_id):
 
     file1.close()
     file2.close()
+    return (count/(i+1))*100
 
 if __name__ == '__main__':
     alignmentscore()
